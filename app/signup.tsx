@@ -28,8 +28,14 @@ const signUp = () => {
         ]);
       }
     } catch (error: any) {
-      console.log(error);
-      Alert.alert('Sign Up Failed', error.message);
+      switch (error.code) {
+        case "auth/email-already-in-use":
+          Alert.alert("Error", "Email already in use.");
+          break;
+        case "auth/invalid-email":
+          Alert.alert("Error", "Invalid email.");
+          break;
+      }
     }
   };
 

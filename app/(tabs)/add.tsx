@@ -1,15 +1,16 @@
 import DateTimePicker from '@react-native-community/datetimepicker';
+import { router } from 'expo-router';
 import React, { useState } from 'react';
 import { Controller, useForm } from 'react-hook-form';
 import {
-    Alert,
-    Platform,
-    ScrollView,
-    StyleSheet,
-    Text,
-    TextInput,
-    TouchableOpacity,
-    View
+  Alert,
+  Platform,
+  ScrollView,
+  StyleSheet,
+  Text,
+  TextInput,
+  TouchableOpacity,
+  View
 } from 'react-native';
 import { addBirthday } from '../../firebase/birthdayService';
 
@@ -55,6 +56,8 @@ const AddBirthdaysScreen = () => {
         setValue('date', new Date());
         setValue('time', new Date());
         setValue('includeTime', false);
+
+        router.replace('/(tabs)/home');
         
       } catch (error: any) {
         console.error('Error adding birthday:', error);
